@@ -1,8 +1,15 @@
 import { RiTodoFill, RiDeleteBin2Line } from 'react-icons/ri'
 import { FaCheck } from 'react-icons/fa'
+import { TodoItem } from './Types'
 import styles from './Todo.module.css'
 
-function Todo({ todo, deleteTodo, toggleTodo }) {
+interface Props {
+  todo: TodoItem
+  deleteTodo: (id: string) => void
+  toggleTodo: (id: string) => void
+}
+
+function Todo({ todo, deleteTodo, toggleTodo }: Props) {
   return (
     <div
       className={`${styles.todo} ${
