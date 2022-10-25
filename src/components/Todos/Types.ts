@@ -3,5 +3,3 @@ export interface TodoItem {
   text: string
   isCompleted: boolean
 }
-
-export interface TodoItems extends Array<TodoItem> {}
