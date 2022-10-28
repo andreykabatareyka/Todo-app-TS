@@ -1,11 +1,11 @@
 import Todo from './Todo'
 import styles from './TodoList.module.css'
-import { TodoItem, TodoItems } from './Types'
+import { TodoItem } from './Types'
 
 interface Props {
   deleteTodo: (id: string) => void
   toggleTodo: (id: string) => void
-  todos: TodoItems
+  todos: TodoItem[]
 }
 
 function TodoList({ todos, deleteTodo, toggleTodo }: Props) {
