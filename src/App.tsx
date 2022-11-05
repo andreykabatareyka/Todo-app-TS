@@ -5,7 +5,7 @@ import TodoForm from './components/Todos/TodoForm'
 import TodoList from './components/Todos/TodoList'
 import TodosActions from './components/Todos/TodosActions'
 import './App.css'
-
+//model start
 function App() {
   const [todos, setTodos] = useState<TodoItem[]>([])
 
@@ -36,23 +36,25 @@ function App() {
     setTodos(todos.filter((todo) => !todo.isCompleted))
   }
   const completedTodosCount = todos.filter((todo) => todo.isCompleted).length
+  //model end
 
+  //view start
   return (
     <div className="App">
       <h1>Todo App</h1>
       <TodoForm addTodo={addTodoHandler} />
       {!!todos.length && (
         <TodosActions
-          completedTodosExist={!!completedTodosCount}
-          resetTodos={resetTodoHandler}
-          deleteCompletedTodos={deleteCompletedTodosHandler}
+          completedTodosExist={!!completedTodosCount} //controller
+          resetTodos={resetTodoHandler} //controller
+          deleteCompletedTodos={deleteCompletedTodosHandler} //controller
         />
       )}
 
       <TodoList
-        todos={todos}
-        deleteTodo={deleteTodoHandler}
-        toggleTodo={toggleTodoHandler}
+        todos={todos} //controller
+        deleteTodo={deleteTodoHandler} //controller
+        toggleTodo={toggleTodoHandler} //controller
       />
       {!!completedTodosCount && (
         <h2>
@@ -64,5 +66,5 @@ function App() {
     </div>
   )
 }
-
+//view end
 export default App

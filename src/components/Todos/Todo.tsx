@@ -3,6 +3,7 @@ import { FaCheck } from 'react-icons/fa'
 import { TodoItem } from './Types'
 import styles from './Todo.module.css'
 
+//model start
 interface Props {
   todo: TodoItem
   deleteTodo: (id: string) => void
@@ -10,6 +11,9 @@ interface Props {
 }
 
 function Todo({ todo, deleteTodo, toggleTodo }: Props) {
+  //model end
+
+  //view start
   return (
     <div
       className={`${styles.todo} ${
@@ -19,14 +23,15 @@ function Todo({ todo, deleteTodo, toggleTodo }: Props) {
       <RiTodoFill className={styles.completedTodo} />
       <div className={styles.todoText}>{todo.text}</div>
       <RiDeleteBin2Line
-        onClick={() => deleteTodo(todo.id)}
+        onClick={() => deleteTodo(todo.id)} //controller
         className={styles.deleteIcon}
       />
       <FaCheck
         className={styles.checkIcon}
-        onClick={() => toggleTodo(todo.id)}
+        onClick={() => toggleTodo(todo.id)} //controller
       />
     </div>
   )
 }
+//view end
 export default Todo
