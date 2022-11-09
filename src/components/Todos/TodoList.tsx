@@ -4,9 +4,9 @@ import { TodoItem } from './Types'
 
 //model start
 interface Props {
-  deleteTodo: (id: string) => void
-  toggleTodo: (id: string) => void
-  todos: TodoItem[]
+  deleteTodo: (id: string) => void //эвент - createEvent
+  toggleTodo: (id: string) => void //эвент - createEvent
+  todos: TodoItem[] //состояние - createStore
 }
 
 function TodoList({ todos, deleteTodo, toggleTodo }: Props) {
@@ -17,10 +17,10 @@ function TodoList({ todos, deleteTodo, toggleTodo }: Props) {
       {!todos.length && <h2>Todo list is empty</h2>}
       {todos.map((todo: TodoItem) => (
         <Todo
-          key={todo.id} //controller
-          todo={todo} //controller
-          deleteTodo={deleteTodo} //controller
-          toggleTodo={toggleTodo} //controller
+          key={todo.id}
+          todo={todo} //controller  //эвент - createEvent
+          deleteTodo={deleteTodo} //controller  //эвент - createEvent
+          toggleTodo={toggleTodo} //controller  //эвент - createEvent
         />
       ))}
     </div>
