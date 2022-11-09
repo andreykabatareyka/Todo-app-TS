@@ -10,25 +10,29 @@ interface Props {
   toggleTodo: (id: string) => void
 }
 
-function Todo({ todo, deleteTodo, toggleTodo }: Props) {
+function Todo({
+  todo, //состояние - createStore
+  deleteTodo, //эвент - createEvent
+  toggleTodo, //эвент - createEvent
+}: Props) {
   //model end
 
   //view start
   return (
     <div
       className={`${styles.todo} ${
-        todo.isCompleted ? styles.completedTodo : ''
+        todo.isCompleted ? styles.completedTodo : // ???
       }`}
     >
       <RiTodoFill className={styles.completedTodo} />
       <div className={styles.todoText}>{todo.text}</div>
       <RiDeleteBin2Line
-        onClick={() => deleteTodo(todo.id)} //controller
+        onClick={() => deleteTodo(todo.id)} //controller //эвент - createEvent
         className={styles.deleteIcon}
       />
       <FaCheck
         className={styles.checkIcon}
-        onClick={() => toggleTodo(todo.id)} //controller
+        onClick={() => toggleTodo(todo.id)} //controller //эвент - createEvent
       />
     </div>
   )

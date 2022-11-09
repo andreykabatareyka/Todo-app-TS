@@ -7,9 +7,10 @@ import TodosActions from './components/Todos/TodosActions'
 import './App.css'
 //model start
 function App() {
-  const [todos, setTodos] = useState<TodoItem[]>([])
+  const [todos, setTodos] = useState<TodoItem[]>([]) //состояние - createStore
 
   const addTodoHandler = (text: string) => {
+    //эвент - createEvent
     const newTodo = {
       text: text,
       isCompleted: false,
@@ -18,9 +19,11 @@ function App() {
     setTodos([...todos, newTodo])
   }
   const deleteTodoHandler = (id: string) => {
+    //эвент - createEvent
     setTodos(todos.filter((todo) => todo.id !== id))
   }
   const toggleTodoHandler = (id: string) => {
+    //эвент - createEvent
     setTodos(
       todos.map((todo) => {
         return todo.id === id
@@ -30,9 +33,11 @@ function App() {
     )
   }
   const resetTodoHandler = () => {
+    //эвент - createEvent
     setTodos([])
   }
   const deleteCompletedTodosHandler = () => {
+    //эвент - createEvent
     setTodos(todos.filter((todo) => !todo.isCompleted))
   }
   const completedTodosCount = todos.filter((todo) => todo.isCompleted).length
@@ -45,16 +50,16 @@ function App() {
       <TodoForm addTodo={addTodoHandler} />
       {!!todos.length && (
         <TodosActions
-          completedTodosExist={!!completedTodosCount} //controller
-          resetTodos={resetTodoHandler} //controller
-          deleteCompletedTodos={deleteCompletedTodosHandler} //controller
+          completedTodosExist={!!completedTodosCount} //controller  //эвент - createEvent
+          resetTodos={resetTodoHandler} //controller //эвент - createEvent
+          deleteCompletedTodos={deleteCompletedTodosHandler} //controller //эвент - createEvent
         />
       )}
 
       <TodoList
-        todos={todos} //controller
-        deleteTodo={deleteTodoHandler} //controller
-        toggleTodo={toggleTodoHandler} //controller
+        todos={todos} //controller //эвент - createEvent
+        deleteTodo={deleteTodoHandler} //controller //эвент - createEvent
+        toggleTodo={toggleTodoHandler} //controller //эвент - createEvent
       />
       {!!completedTodosCount && (
         <h2>
