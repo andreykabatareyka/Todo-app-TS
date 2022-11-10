@@ -18,16 +18,13 @@ function TodosActions({
   //view start
   return (
     <div className={styles.todosActionsContainer}>
-      <Button
-        title="Reset Todos"
-        onClick={resetTodos} /*controller / эвент createEvent*/
-      >
+      <Button title="Reset Todos" onClick={resetTodos} /*controller*/>
         <RiRefreshLine />
       </Button>
       <Button
         title="Clear Completed Todos"
-        onClick={deleteCompletedTodos} //controller //эвент - createEvent
-        disabled={!completedTodosExist} //controller //эвент - createEvent
+        onClick={deleteCompletedTodos} //controller
+        disabled={!completedTodosExist} //controller
       >
         <RiDeleteBin2Line />
       </Button>

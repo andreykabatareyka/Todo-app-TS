@@ -7,19 +7,20 @@ interface Props {
 }
 function TodoForm({ addTodo }: Props) {
   const [text, setTetxt] = useState('') //состояние - createStore
-  const onSubmitHandler = (event: any) => {
-    event.preventDefault()
-    addTodo(text) //эвент - createEvent
-    setTetxt('') //эвент - createEvent
-  }
+  const onSubmitHandler = //эвент - createEvent
+    (event: any) => {
+      event.preventDefault()
+      addTodo(text)
+      setTetxt('')
+    }
   //model end
   //view start
   return (
     <div className={styles.todoFormContainer}>
-      <form onSubmit={onSubmitHandler} /* controller эвент - createEvent */>
+      <form onSubmit={onSubmitHandler} /* controller */>
         <input
           value={text}
-          onChange={(e) => setTetxt(e.target.value)} //controller //эвент - createEvent
+          onChange={(e) => setTetxt(e.target.value)} //controller
           placeholder="Enter new todo"
         />
         <Button type="submit" title="Submit">

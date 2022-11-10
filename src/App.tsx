@@ -9,35 +9,39 @@ import './App.css'
 function App() {
   const [todos, setTodos] = useState<TodoItem[]>([]) //состояние - createStore
 
-  const addTodoHandler = (text: string) => {
-    //эвент - createEvent
-    const newTodo = {
-      text: text,
-      isCompleted: false,
-      id: uuidv4(),
+  const addTodoHandler = //эвент - createEvent
+    (text: string) => {
+      const newTodo =
+        //состояние - createStore
+        {
+          text: text,
+          isCompleted: false,
+          id: uuidv4(),
+        }
+      setTodos([...todos, newTodo])
     }
-    setTodos([...todos, newTodo])
-  }
-  const deleteTodoHandler = (id: string) => {
-    //эвент - createEvent
-    setTodos(todos.filter((todo) => todo.id !== id))
-  }
-  const toggleTodoHandler = (id: string) => {
-    //эвент - createEvent
-    setTodos(
-      todos.map((todo) => {
-        return todo.id === id
-          ? { ...todo, isCompleted: !todo.isCompleted }
-          : { ...todo }
-      })
-    )
-  }
+  const deleteTodoHandler = //эвент - createEvent
+    (id: string) => {
+      setTodos(todos.filter((todo) => todo.id !== id))
+    }
+  const toggleTodoHandler = //эвент - createEvent
+    (id: string) => {
+      setTodos(
+        todos.map((todo) => {
+          return todo.id === id
+            ? { ...todo, isCompleted: !todo.isCompleted }
+            : { ...todo }
+        })
+      )
+    }
   const resetTodoHandler = () => {
     //эвент - createEvent
+
     setTodos([])
   }
   const deleteCompletedTodosHandler = () => {
     //эвент - createEvent
+
     setTodos(todos.filter((todo) => !todo.isCompleted))
   }
   const completedTodosCount = todos.filter((todo) => todo.isCompleted).length
