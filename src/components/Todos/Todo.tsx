@@ -8,7 +8,7 @@ interface Props {
   deleteTodo: (id: string) => void
   toggleTodo: (id: string) => void
 }
-d
+
 function Todo({ todo, deleteTodo, toggleTodo }: Props) {
   return (
     <div
