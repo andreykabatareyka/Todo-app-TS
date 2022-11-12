@@ -5,65 +5,61 @@ import TodoForm from './components/Todos/TodoForm'
 import TodoList from './components/Todos/TodoList'
 import TodosActions from './components/Todos/TodosActions'
 import './App.css'
-//model start
+
 function App() {
-  const [todos, setTodos] = useState<TodoItem[]>([]) //состояние - createStore
+  const [todos, setTodos] = useState<TodoItem[]>([])
 
-  const addTodoHandler = //эвент - createEvent
-    (text: string) => {
-      const newTodo =
-        //состояние - createStore
-        {
-          text: text,
-          isCompleted: false,
-          id: uuidv4(),
-        }
-      setTodos([...todos, newTodo])
-    }
-  const deleteTodoHandler = //эвент - createEvent
-    (id: string) => {
-      setTodos(todos.filter((todo) => todo.id !== id))
-    }
-  const toggleTodoHandler = //эвент - createEvent
-    (id: string) => {
-      setTodos(
-        todos.map((todo) => {
-          return todo.id === id
-            ? { ...todo, isCompleted: !todo.isCompleted }
-            : { ...todo }
-        })
-      )
-    }
+  const addTodoHandler = (text: string) => {
+    setTodos([
+      ...todos,
+      {
+        text: text,
+        isCompleted: false,
+        id: uuidv4(),
+      },
+    ])
+  }
+
+  const deleteTodoHandler = (id: string) => {
+    setTodos(todos.filter((todo) => todo.id !== id))
+  }
+
+  const toggleTodoHandler = (id: string) => {
+    setTodos(
+      todos.map((todo) => {
+        return todo.id === id
+          ? { ...todo, isCompleted: !todo.isCompleted }
+          : { ...todo }
+      })
+    )
+  }
+
   const resetTodoHandler = () => {
-    //эвент - createEvent
-
     setTodos([])
   }
-  const deleteCompletedTodosHandler = () => {
-    //эвент - createEvent
 
+  const deleteCompletedTodosHandler = () => {
     setTodos(todos.filter((todo) => !todo.isCompleted))
   }
-  const completedTodosCount = todos.filter((todo) => todo.isCompleted).length
-  //model end
 
-  //view start
+  const completedTodosCount = todos.filter((todo) => todo.isCompleted).length
+
   return (
     <div className="App">
       <h1>Todo App</h1>
       <TodoForm addTodo={addTodoHandler} />
       {!!todos.length && (
         <TodosActions
-          completedTodosExist={!!completedTodosCount} //controller  //эвент - createEvent
-          resetTodos={resetTodoHandler} //controller //эвент - createEvent
-          deleteCompletedTodos={deleteCompletedTodosHandler} //controller //эвент - createEvent
+          completedTodosExist={!!completedTodosCount}
+          resetTodos={resetTodoHandler}
+          deleteCompletedTodos={deleteCompletedTodosHandler}
         />
       )}
 
       <TodoList
-        todos={todos} //controller //эвент - createEvent
-        deleteTodo={deleteTodoHandler} //controller //эвент - createEvent
-        toggleTodo={toggleTodoHandler} //controller //эвент - createEvent
+        todos={todos}
+        deleteTodo={deleteTodoHandler}
+        toggleTodo={toggleTodoHandler}
       />
       {!!completedTodosCount && (
         <h2>
@@ -75,5 +71,5 @@ function App() {
     </div>
   )
 }
-//view end
+
 export default App

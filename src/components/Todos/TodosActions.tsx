@@ -2,7 +2,6 @@ import { RiDeleteBin2Line, RiRefreshLine } from 'react-icons/ri'
 import Button from '../UI/Button'
 import styles from './TodosActions.module.css'
 
-//model start
 interface Props {
   resetTodos: () => void
   deleteCompletedTodos: () => void
@@ -14,22 +13,20 @@ function TodosActions({
   deleteCompletedTodos,
   completedTodosExist,
 }: Props) {
-  //model end
-  //view start
   return (
     <div className={styles.todosActionsContainer}>
-      <Button title="Reset Todos" onClick={resetTodos} /*controller*/>
+      <Button title="Reset Todos" onClick={resetTodos}>
         <RiRefreshLine />
       </Button>
       <Button
         title="Clear Completed Todos"
-        onClick={deleteCompletedTodos} //controller
-        disabled={!completedTodosExist} //controller
+        onClick={deleteCompletedTodos}
+        disabled={!completedTodosExist}
       >
         <RiDeleteBin2Line />
       </Button>
     </div>
   )
 }
-//view end
+
 export default TodosActions

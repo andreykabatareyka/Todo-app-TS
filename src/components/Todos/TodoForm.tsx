@@ -1,26 +1,25 @@
 import { useState } from 'react'
 import styles from './TodoForm.module.css'
 import Button from '../UI/Button'
-//model start
+
 interface Props {
   addTodo: (text: string) => void
 }
 function TodoForm({ addTodo }: Props) {
-  const [text, setTetxt] = useState('') //состояние - createStore
-  const onSubmitHandler = //эвент - createEvent
-    (event: any) => {
-      event.preventDefault()
-      addTodo(text)
-      setTetxt('')
-    }
-  //model end
-  //view start
+  const [text, setText] = useState('')
+
+  const onSubmitHandler = (event: any) => {
+    event.preventDefault()
+    addTodo(text)
+    setText('')
+  }
+
   return (
     <div className={styles.todoFormContainer}>
-      <form onSubmit={onSubmitHandler} /* controller */>
+      <form onSubmit={onSubmitHandler}>
         <input
           value={text}
-          onChange={(e) => setTetxt(e.target.value)} //controller
+          onChange={(e) => setText(e.target.value)}
           placeholder="Enter new todo"
         />
         <Button type="submit" title="Submit">
@@ -30,5 +29,4 @@ function TodoForm({ addTodo }: Props) {
     </div>
   )
 }
-//view end
 export default TodoForm
